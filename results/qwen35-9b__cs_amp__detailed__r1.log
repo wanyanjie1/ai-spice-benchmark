@@ -1,0 +1,12 @@
+
+Note: Compatibility modes selected: ps lt a
+
+
+Circuit: * single-stage common-source nmos amplifier design
+
+Error on line 35 or its substitute:
+  vdd drain 0 dc 5
+device already exists, bail out
+    Simulation interrupted due to error!
+
+Note: No ".plot", ".print", or ".fourier" lines; no simulations run

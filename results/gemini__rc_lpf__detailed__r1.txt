@@ -1,0 +1,36 @@
+PROMPT:
+You are an analog circuit designer. Design a first-order passive RC low-pass filter.
+Spec: -3 dB cutoff frequency fc = 1 kHz, passband gain 0 dB.
+Steps: use fc = 1/(2*pi*R*C); pick a standard capacitor (e.g. 100 nF) and compute R; write the hand calculation as SPICE comments (* ...).
+Topology: V1 in 0 AC 1 -> series R from in to out -> C from out to ground. No load resistor.
+
+Output requirements (must follow):
+- Output exactly ONE ngspice-compatible SPICE netlist inside a ```spice code block.
+- The input AC source must drive node `in` with `AC 1`. The output node must be named `out`.
+- Define every device model with a .model line inside the netlist (no .include / .lib).
+- Do not include a .control block.
+
+
+REPLY:
+```spice
+* First-Order Passive RC Low-Pass Filter
+* 
+* Hand Calculation:
+* Formula: fc = 1 / (2 * pi * R * C)
+* Target cutoff frequency (fc) = 1 kHz = 1000 Hz
+* Selected standard capacitor value: C = 100 nF (100e-9 F)
+* R = 1 / (2 * pi * fc * C)
+* R = 1 / (2 * pi * 1000 * 100e-9) = 1591.55 ohms
+
+* Input Signal Source
+V1 in 0 DC 0 AC 1
+
+* Filter Components
+R1 in out 1.59155k
+C1 out 0 100n
+
+* AC Analysis from 10 Hz to 100 kHz (20 points per decade)
+.ac dec 20 10 100k
+
+.end
+```

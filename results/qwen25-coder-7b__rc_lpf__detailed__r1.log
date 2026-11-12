@@ -1,0 +1,12 @@
+
+Note: Compatibility modes selected: ps lt a
+
+
+Circuit: * first-order passive rc low-pass filter design
+
+Error on line 17 or its substitute:
+  .out 2
+ unimplemented dot command '.out'
+    Simulation interrupted due to error!
+
+Note: No ".plot", ".print", or ".fourier" lines; no simulations run

@@ -1,0 +1,33 @@
+* Common-Source NMOS Amplifier
+
+* Power Supply
+VDD vdd 0 DC 5
+
+* Input AC Source driving node 'in' with AC 1
+Vin in 0 DC 0 AC 1
+
+* Coupling Capacitor
+Cin in gate 10u
+
+* Gate Bias Resistors (V_gate = 1.5V)
+R1 vdd gate 700k
+R2 gate 0 300k
+
+* Drain Load Resistor
+RD vdd out 1k
+
+* NMOS Transistor
+M1 out gate 0 0 NMOS_MODEL W=10u L=10u
+
+* NMOS Model Definition (VTO = 1.0V, KP = 20mA/V^2 -> gm = 10mS, Gain = gm*RD = 10)
+.model NMOS_MODEL NMOS (VTO=1.0 KP=20m)
+
+* AC Analysis at 1 kHz
+
+.control
+set wr_singlescale
+ac dec 50 1 1e9
+wrdata gemini__cs_amp__simple__r1.dat vdb(out)
+quit
+.endc
+.end

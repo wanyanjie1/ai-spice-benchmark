@@ -1,0 +1,12 @@
+
+Note: Compatibility modes selected: ps lt a
+
+
+Circuit: * .model r1 resistor
+
+Error on line 9 or its substitute:
+  ac 1
+ MIF-ERROR - unable to find definition of model 1
+    Simulation interrupted due to error!
+
+Note: No ".plot", ".print", or ".fourier" lines; no simulations run

@@ -1,0 +1,49 @@
+* Single-Stage Common-Source NMOS Amplifier Design
+* Spec: |Av| = 10 (20 dB) at 1 kHz, VDD = 5 V
+*
+* Hand Calculation:
+* Model parameters: VTO = 0.7 V, KP = 200 uA/V^2, lambda = 0.01 V^-1
+* Assume MOSFET dimensions W = 10u, L = 10u (W/L = 1)
+* 1. Choose VGS = 1.2 V
+*    Overdrive voltage Vov = VGS - VTO = 1.2 V - 0.7 V = 0.5 V
+* 2. Compute Drain Current (ID):
+*    ID = 0.5 * KP * (W/L) * (VGS - VTO)^2
+*       = 0.5 * 200u * 1 * (0.5)^2 = 25 uA
+* 3. Compute Transconductance (gm):
+*    gm = 2 * ID / (VGS - VTO) = 2 * 25u / 0.5 = 100 uS (0.1 mS)
+* 4. Choose RD for target gain |Av| ~= 10:
+*    |Av| = gm * RD  =>  RD = 10 / gm = 10 / 100u = 100 kOhm
+* 5. Check Saturation Condition:
+*    VDS = VDD - ID * RD = 5 V - 25uA * 100k = 2.5 V
+*    VDS (2.5 V) > VGS - VTO (0.5 V) -> MOSFET stays in saturation.
+* 6. Gate Bias Resistor Divider (R1, R2):
+*    VGS = VDD * R2 / (R1 + R2) = 1.2 V
+*    R2 / (R1 + R2) = 1.2 / 5 = 0.24
+*    Choosing R2 = 120 kOhm gives R1 = 380 kOhm.
+
+* Power Supply
+VDD vdd 0 DC 5
+
+* Input Source
+V1 in 0 DC 0 AC 1
+
+* Input Coupling Capacitor
+C1 in gate 10u
+
+* Gate Bias Resistors
+R1 vdd gate 380k
+R2 gate 0 120k
+
+* Common-Source MOSFET
+M1 out gate 0 0 NMOS1 W=10u L=10u
+
+* Drain Resistor
+RD vdd out 100k
+
+* MOSFET Model
+.model NMOS1 nmos level=1 vto=0.7 kp=200u lambda=0.01
+
+* AC Simulation Analysis
+.ac dec 10 100 10k
+
+.end

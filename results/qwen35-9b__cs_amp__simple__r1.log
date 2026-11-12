@@ -1,0 +1,18 @@
+
+Note: Compatibility modes selected: ps lt a
+
+
+Circuit: * common-source nmos amplifier design
+
+warning, model type mismatch in line
+    m1 drain out gate source nmos
+warning, model type mismatch in line
+    m1 drain out gate source nmos
+warning, model type mismatch in line
+    m1 drain out gate source nmos
+Error on line 7 or its substitute:
+  m1 drain out gate source nmos
+could not find a valid modelname
+    Simulation interrupted due to error!
+
+Note: No ".plot", ".print", or ".fourier" lines; no simulations run

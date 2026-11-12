@@ -1,0 +1,16 @@
+
+Note: Compatibility modes selected: ps lt a
+
+
+Circuit: * two-stage miller-compensated cmos op amp design
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+ngspice-42 done
+Fatal error: instance vgnd is a shorted VSRC
+doAnalyses: operation not supported
+
+ac simulation(s) aborted
+Error: no such vector out
+  in term: vdb(out)
+

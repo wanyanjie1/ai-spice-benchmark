@@ -1,0 +1,12 @@
+
+Note: Compatibility modes selected: ps lt a
+
+
+Circuit: * common-source nmos amplifier design
+
+Error on line 9 or its substitute:
+  vdd 3 0 dc 5
+device already exists, bail out
+    Simulation interrupted due to error!
+
+Note: No ".plot", ".print", or ".fourier" lines; no simulations run

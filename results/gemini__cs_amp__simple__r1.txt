@@ -1,0 +1,41 @@
+PROMPT:
+Design a common-source NMOS amplifier with a small-signal voltage gain magnitude of 10 (20 dB) at 1 kHz, VDD = 5 V.
+
+Output requirements (must follow):
+- Output exactly ONE ngspice-compatible SPICE netlist inside a ```spice code block.
+- The input AC source must drive node `in` with `AC 1`. The output node must be named `out`.
+- Define every device model with a .model line inside the netlist (no .include / .lib).
+- Do not include a .control block.
+
+
+REPLY:
+```spice
+Common-Source NMOS Amplifier
+
+* Power Supply
+VDD vdd 0 DC 5
+
+* Input AC Source driving node 'in' with AC 1
+Vin in 0 DC 0 AC 1
+
+* Coupling Capacitor
+Cin in gate 10u
+
+* Gate Bias Resistors (V_gate = 1.5V)
+R1 vdd gate 700k
+R2 gate 0 300k
+
+* Drain Load Resistor
+RD vdd out 1k
+
+* NMOS Transistor
+M1 out gate 0 0 NMOS_MODEL W=10u L=10u
+
+* NMOS Model Definition (VTO = 1.0V, KP = 20mA/V^2 -> gm = 10mS, Gain = gm*RD = 10)
+.model NMOS_MODEL NMOS (VTO=1.0 KP=20m)
+
+* AC Analysis at 1 kHz
+.ac dec 10 100 10k
+
+.end
+```

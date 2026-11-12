@@ -1,0 +1,52 @@
+PROMPT:
+Design a two-stage CMOS operational amplifier (differential input pair + common-source second stage, Miller compensated) with open-loop DC gain of at least 60 dB, VDD = 5 V. The non-inverting input is node `in`.
+
+Output requirements (must follow):
+- Output exactly ONE ngspice-compatible SPICE netlist inside a ```spice code block.
+- The input AC source must drive node `in` with `AC 1`. The output node must be named `out`.
+- Define every device model with a .model line inside the netlist (no .include / .lib).
+- Do not include a .control block.
+
+
+REPLY:
+```spice
+Two-Stage CMOS Operational Amplifier
+
+* Power Supply
+Vdd vdd 0 DC 5
+
+* Input AC Source (Non-Inverting Input node 'in')
+Vin in 0 DC 2.5 AC 1
+
+* DC Feedback Loop for Operating Point Self-Biasing
+Rdc out in_m 1G
+Cac in_m 0 1F
+
+* Bias Reference Circuit
+Rbias vdd vbias_n 100k
+Mbias vbias_n vbias_n 0 0 NMOS W=10u L=2u
+
+* First Stage: Differential Pair with Active Load
+M5 tail vbias_n 0 0 NMOS W=10u L=2u
+M1 n1 in tail 0 NMOS W=20u L=2u
+M2 n2 in_m tail 0 NMOS W=20u L=2u
+M3 n1 n2 vdd vdd PMOS W=20u L=2u
+M4 n2 n2 vdd vdd PMOS W=20u L=2u
+
+* Second Stage: Common-Source Amplifier
+M6 out n1 vdd vdd PMOS W=50u L=2u
+M7 out vbias_n 0 0 NMOS W=25u L=2u
+
+* Miller Compensation Network
+Cc n1 cc_int 3p
+Rc cc_int out 1k
+
+* MOSFET Models
+.model NMOS NMOS (LEVEL=1 VTO=0.7 KP=100U LAMBDA=0.010 GAMMA=0.4)
+.model PMOS PMOS (LEVEL=1 VTO=-0.7 KP=40U LAMBDA=0.015 GAMMA=0.4)
+
+* Analysis Command
+.ac dec 10 0.1 100Meg
+
+.end
+```

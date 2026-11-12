@@ -1,0 +1,24 @@
+PROMPT:
+Design a first-order passive RC low-pass filter with a -3 dB cutoff frequency of 1 kHz.
+
+Output requirements (must follow):
+- Output exactly ONE ngspice-compatible SPICE netlist inside a ```spice code block.
+- The input AC source must drive node `in` with `AC 1`. The output node must be named `out`.
+- Define every device model with a .model line inside the netlist (no .include / .lib).
+- Do not include a .control block.
+
+
+REPLY:
+```spice
+* First-order Passive RC Low-Pass Filter
+* Cutoff Frequency: 1 kHz
+
+Vsource in 0 AC 1
+Rload out 0 1k
+Cfilter in out 159.15u
+.model Vsource vsource (voltage=0)
+.model Rload resistor (r=1k)
+.model Cfilter capacitor (c=159.15u)
+.ac dec 100 10 1Meg
+.plot ac v(out)
+.end

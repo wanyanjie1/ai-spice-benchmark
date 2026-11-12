@@ -1,0 +1,48 @@
+PROMPT:
+You are an analog circuit designer. Design a single-stage common-source NMOS amplifier.
+Spec: |Av| = 10 (20 dB) at 1 kHz, VDD = 5 V, no external load.
+Use this model: .model NMOS1 nmos level=1 vto=0.7 kp=200u lambda=0.01
+Topology: resistor-divider gate bias, 10uF input coupling capacitor from `in` to the gate, drain resistor RD from VDD to drain, source to ground, node `out` = drain (no output coupling capacitor).
+Steps: choose ID and VGS, compute gm = 2*ID/(VGS-VTO), choose RD so that gm*RD ~= 10, check the MOSFET stays in saturation (VDS > VGS-VTO). Write the hand calculation as SPICE comments (* ...).
+Input source: V1 in 0 DC 0 AC 1.
+
+Output requirements (must follow):
+- Output exactly ONE ngspice-compatible SPICE netlist inside a ```spice code block.
+- The input AC source must drive node `in` with `AC 1`. The output node must be named `out`.
+- Define every device model with a .model line inside the netlist (no .include / .lib).
+- Do not include a .control block.
+
+
+REPLY:
+```spice code block
+* Single-stage common-source NMOS amplifier design
+* VDD = 5 V, Av = 10 (20 dB) at 1 kHz, no external load
+* Model: NMOS1 nmos level=1 vto=0.7 kp=200u lambda=0.01
+
+* Step 1: Choose ID and VGS
+* Av = gm * RD
+* 10 = gm * RD
+* gm = 2 * ID / (VGS - VTO)
+* Let's choose ID = 100uA for simplicity
+* 10 = (2 * 100uA) / (VGS - 0.7V)
+* VGS = 0.7V + 5V / 20 = 0.7V + 0.25V = 0.95V
+
+* Step 2: Choose RD
+* gm = 2 * ID / (VGS - VTO) = 2 * 100uA / (0.95V - 0.7V) = 2 * 100uA / 0.25V = 800uS
+* RD = Av / gm = 10 / 800uS = 12.5kΩ
+
+* Step 3: Check MOSFET stays in saturation
+* VDS = VDD - VGS = 5V - 0.95V = 4.05V
+* VGS - VTO = 0.95V - 0.7V = 0.25V
+* Since VDS > VGS - VTO, the MOSFET stays in saturation
+
+* Netlist
+.model NMOS1 nmos level=1 vto=0.7 kp=200u lambda=0.01
+R1 in 1 10u
+R2 1 0 10k
+R3 0 out 12.5k
+M1 1 out 0 0 NMOS1
+V1 in 0 DC 0 AC 1
+```
+
+This SPICE netlist defines a single-stage common-source NMOS amplifier with the specified requirements. The input AC source drives node `in` with `AC 1`, and the output node is named `out`. The MOSFET model `NMOS1` is defined with the given parameters.

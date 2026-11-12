@@ -1,0 +1,614 @@
+PROMPT:
+Design a two-stage CMOS operational amplifier (differential input pair + common-source second stage, Miller compensated) with open-loop DC gain of at least 60 dB, VDD = 5 V. The non-inverting input is node `in`.
+
+Output requirements (must follow):
+- Output exactly ONE ngspice-compatible SPICE netlist inside a ```spice code block.
+- The input AC source must drive node `in` with `AC 1`. The output node must be named `out`.
+- Define every device model with a .model line inside the netlist (no .include / .lib).
+- Do not include a .control block.
+
+
+REPLY:
+```spice code
+* Two-stage CMOS operational amplifier design
+* Differential input pair + common-source second stage, Miller compensated
+* Open-loop DC gain of at least 60 dB, VDD = 5 V
+
+* Define NMOS and PMOS transistors
+.model NM NMOS L=1u W=10u
+.model PM PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=1u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u
+.model INP PMOS L=1u W=10u
+
+* Define NMOS and PMOS transformers
+.model TNM NMOS L=1u W=10u
+.model TNP PMOS L=1u W=10u
+
+* Define NMOS and PMOS diodes
+.model DNM NMOS L=1u W=10u
+.model DPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS capacitors
+.model CNM NMOS L=1u W=10u
+.model CPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS resistors
+.model RNM NMOS L=1u W=10u
+.model RPM PMOS L=1u W=10u
+
+* Define NMOS and PMOS inductors
+.model INM NMOS L=1u W=10u

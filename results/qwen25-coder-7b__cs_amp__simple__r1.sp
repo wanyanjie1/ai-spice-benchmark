@@ -1,0 +1,23 @@
+* Common-source NMOS amplifier design
+* Small-signal voltage gain magnitude of 10 (20 dB) at 1 kHz
+* VDD = 5 V
+* Define NMOS device model
+.model NMOS NMOS L=1u W=10u KP=100u
+* Circuit description
+VDD 1 0 DC 5
+VSS 2 0 DC 0
+VDD 3 0 DC 5
+VSS 4 0 DC 0
+VDD 5 0 DC 5
+VSS 6 0 DC 0
+* NMOS transistors
+M1 3 2 1 4 NMOS
+M2 5 6 4 0 NMOS
+* AC source
+VAC in 1 AC 1
+* Output node
+.out out 6
+* Analysis
+.tran 1ms 10ms
+.ac dec 10 1 10k
+.end

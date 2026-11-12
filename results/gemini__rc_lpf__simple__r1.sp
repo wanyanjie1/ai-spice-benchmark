@@ -1,0 +1,16 @@
+* First-Order Passive RC Low-Pass Filter
+* Cutoff Frequency (fc) = 1 kHz
+
+* Input AC Voltage Source
+Vin in 0 AC 1
+
+* RC Filter Components
+* fc = 1 / (2 * pi * R * C)
+* For C = 100nF and fc = 1kHz, R = 1 / (2 * pi * 100nF * 1kHz) = 1.59155k ohms
+R1 in out 1.59155k
+C1 out 0 100n
+
+* AC Analysis: 20 points per decade from 10 Hz to 100 kHz
+.ac dec 20 10 100k
+
+.end

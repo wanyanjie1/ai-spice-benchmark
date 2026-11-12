@@ -1,0 +1,12 @@
+
+Note: Compatibility modes selected: ps lt a
+
+
+Circuit: * two-stage cmos op-amp: differential pair + common source + miller compensation
+
+Error on line 29 or its substitute:
+  ibias ibias_node 0 vmodel nmos w=1u l=0.18u
+  unknown parameter (vmodel) 
+    Simulation interrupted due to error!
+
+Note: No ".plot", ".print", or ".fourier" lines; no simulations run
